@@ -1,4 +1,4 @@
-module viasat.com/accfulfillmentprovider
+module github.com/chadgoss/chad_example/tf_accfulfillmentprovider
 
 go 1.17
 
