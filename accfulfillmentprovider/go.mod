@@ -1,4 +1,4 @@
-module github.com/chadgoss/chad_example/tf_accfulfillmentprovider
+module github.com/chadgoss/chad_example/accfulfillmentprovider
 
 go 1.17
 
