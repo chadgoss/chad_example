@@ -14,7 +14,7 @@ on:
 
       pick_runner:
         description: 'runner to use, dev or prod'
-        default: 'ubuntu'
+        default: 'ubuntu-latest'
         required: true
 
   push:
@@ -24,7 +24,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   set_runner:
-    runs-on: [ ubuntu ]
+    runs-on: [ ubuntu-latest ]
     outputs:
       runner: ${{ steps.set_runner.outputs.runner }}
     steps:
