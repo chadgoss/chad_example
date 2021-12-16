@@ -14,14 +14,12 @@ on:
 
       pick_runner:
         description: 'runner to use, dev or prod'
-        default: 'dev'
+        default: 'self-hosted'
         required: true
 
   push:
     branches:
-      - cg_terraform
-      - mm_terraform_new
-      - ear_reorg
+      - master
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
