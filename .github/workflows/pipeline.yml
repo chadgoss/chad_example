@@ -20,7 +20,12 @@ jobs:
       output2: ${{ steps.step2.outputs.test }}
     steps:
       - id: step1
-        run: echo "::set-output name=test::hello"
+        run: |
+          if [[ ${{ github.event.inputs.pick_runner }} == '' ]]; then
+            echo "::set-output name=test:dev"
+          else
+            echo "::set-output name=test:${{ github.event.inputs.pick_runner }}" 
+          fi 
       - id: step2
         run: echo "::set-output name=test::world"
   job2:
