@@ -47,7 +47,7 @@ jobs:
         rm -rf "${{ github.workspace }}"
 
   deploy_bundle:
-    needs: clean_workspace
+    needs: [clean_workspace,set_runner]
     runs-on: ${{needs.set_runner.outputs.runner}}
 
     steps:
