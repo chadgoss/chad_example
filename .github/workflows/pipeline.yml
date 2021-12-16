@@ -19,12 +19,16 @@ jobs:
       run: |
         echo "RUNNER=dev" >> $GITHUB_ENV
         echo "Setting default"
+        echo $RUNNER
+        echo "Step complete"
 
     - id: set_runner_manual
       if: ${{ github.event.inputs.pick_runner }} != ''
       run: |
         echo "RUNNER=${{ github.event.inputs.pick_runner }}" >> $GITHUB_ENV
-        echo "Setting manual"
+        echo "Setting manual:"
+        echo $RUNNER
+        echo "Step complete"
       
     outputs:
       dest_runner: $RUNNER
@@ -34,5 +38,7 @@ jobs:
     needs: set_runner
     steps:
     - id: display_runner
-      run: echo ${{needs.set_runner.outputs.dest_runner}}
+      run: |
+        echo ${{needs.set_runner.outputs.dest_runner}}
+        echo "Step complete"
 
