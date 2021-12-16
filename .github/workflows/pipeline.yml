@@ -16,9 +16,10 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
     - id: set_runner_automated
+      if: ${{ github.event.inputs.pick_runner }} == ''
       run: |
         echo "RUNNER=dev" >> $GITHUB_ENV
-        echo "Setting default"
+        echo "Setting automated:"
         echo $RUNNER
         echo "Step complete"
 
@@ -39,6 +40,6 @@ jobs:
     steps:
     - id: display_runner
       run: |
-        echo ${{needs.set_runner.outputs.dest_runner}}
+        echo "selected runner: ${{needs.set_runner.outputs.dest_runner}}"
         echo "Step complete"
 
