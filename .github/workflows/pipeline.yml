@@ -37,10 +37,10 @@ jobs:
     steps:
       - id: set_runner
         run: |
-          echo "Runners:${{needs.set_runner_manual.outputs.runner}} ${{needs.set_runner_automated.outputs.runner}}"
-          if [[ ${{needs.set_runner_manual.outputs.runner}} ]]; then
-            echo "::set-output name=runner:${{ github.event.inputs.pick_runner }}"
-          else
+          echo "Runners:${{needs.set_runner_automated.outputs.runner}} ${{needs.set_runner_automated.outputs.runner}}"
+          if [[ "Runners: ${{needs.set_runner_manual.outputs.runner}}" == "Runners: " ]]; then
             echo "::set-output name=runner:dev"
+          else
+            echo "::set-output name=runner:${{ github.event.inputs.pick_runner }}"
           fi
 
