@@ -31,6 +31,6 @@ jobs:
           
   display_runner:
     runs-on: ubuntu-latest
-    needs: set_runner_automated
+    needs: [set_runner_automated, set_runner_manual]
     steps:
       - run: echo "Runners:${{needs.set_runner_manual.outputs.runner}} ${{needs.set_runner_automated.outputs.runner}}"
