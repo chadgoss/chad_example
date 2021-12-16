@@ -23,8 +23,7 @@ jobs:
           
   set_runner_automated:
     runs-on: ubuntu-latest
-    needs: set_runner_manual
-    if: needs.set_runner_manual.outputs.runner == 0
+    if: ! ${{ github.event.inputs.pick_runner }}
     outputs:
       runner: ${{ steps.set_runner_automated.outputs.runner }}
     steps:
