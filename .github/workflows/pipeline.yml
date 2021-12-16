@@ -9,7 +9,7 @@ on:
     inputs:
       pick_runner:
         description: 'runner to use, dev or prod'
-        default: 'manual'
+        default: 'dev'
         required: true
 jobs:
   set_runner:
