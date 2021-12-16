@@ -1,4 +1,4 @@
-name: "Terraform"
+name: "environment"
 
 on:
   push:
@@ -16,11 +16,15 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
     - id: set_runner_automated
-      run: echo "RUNNER=dev" >> $GITHUB_ENV
+      run: |
+        echo "RUNNER=dev" >> $GITHUB_ENV
+        echo "Setting default"
 
     - id: set_runner_manual
       if: ${{ github.event.inputs.pick_runner }} != ''
-      run: echo "RUNNER=${{ github.event.inputs.pick_runner }}" >> $GITHUB_ENV
+      run: |
+        echo "RUNNER=${{ github.event.inputs.pick_runner }}" >> $GITHUB_ENV
+        echo "Setting manual"
       
     outputs:
       dest_runner: $RUNNER
