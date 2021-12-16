@@ -19,10 +19,10 @@ jobs:
     steps:
       - id: set_runner
         run: |
-          if [[ ${{ github.event.inputs.pick_runner }} == '' ]]; then
-            echo "::set-output name=runner::automated"
-          else
+          if [[ ${{ github.event.inputs.pick_runner }} ]]; then
             echo "::set-output name=runner::${{ github.event.inputs.pick_runner }}" 
+          else
+            echo "::set-output name=runner::automated" 
           fi 
   display_runner:
     runs-on: ubuntu-latest
