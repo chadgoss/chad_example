@@ -15,6 +15,7 @@ jobs:
   set_runner:
     runs-on: ubuntu-latest 
     steps:
+     - name: Set env runner
       run: |
           if [[ ${{ github.event.inputs.pick_runner }} == '' ]]; then
               echo "RUNNER=dev" >> $GITHUB_ENV
