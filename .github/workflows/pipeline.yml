@@ -15,15 +15,15 @@ jobs:
   set_runner:
     runs-on: ubuntu-latest 
     steps:
-    - name: Set env runner
+    - id: set_runner
       run: |
         if [[ ${{ github.event.inputs.pick_runner }} == '' ]]; then
-          echo "RUNNER=dev" >> $GITHUB_ENV
+          echo "::set-output name=runner:dev"
         else
-          echo "RUNNER=${{ github.event.inputs.pick_runner }}" >> $GITHUB_ENV
+          echo "::set-output name=runner:${{ github.event.inputs.pick_runner }}"
         fi
     outputs:
-      dest_runner: $RUNNER
+      dest_runner: ${{steps.set_runner.outputs.runner}}
       
   display_runner:
     runs-on: ubuntu-latest 
