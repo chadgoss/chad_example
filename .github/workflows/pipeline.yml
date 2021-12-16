@@ -16,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
     - name: Set env runner
-       run: |
-          if [[ ${{ github.event.inputs.pick_runner }} == '' ]]; then
-              echo "RUNNER=dev" >> $GITHUB_ENV
-          else
-              echo "RUNNER=${{ github.event.inputs.pick_runner }}" >> $GITHUB_ENV
-          fi
+      run: |
+        if [[ ${{ github.event.inputs.pick_runner }} == '' ]]; then
+          echo "RUNNER=dev" >> $GITHUB_ENV
+        else
+          echo "RUNNER=${{ github.event.inputs.pick_runner }}" >> $GITHUB_ENV
+        fi
     outputs:
       dest_runner: $RUNNER
       
