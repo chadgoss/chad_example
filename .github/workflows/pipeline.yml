@@ -20,9 +20,9 @@ jobs:
     - id: set_runner
       run: |
         if [[ "Runner: ${{ github.event.inputs.pick_runner }}" == "Runner: " ]]; then
-          echo "::set-output name=runner:dev"
+          echo "::set-output name=runner::dev"
         else
-          echo "::set-output name=runner:${{ github.event.inputs.pick_runner }}"
+          echo "::set-output name=runner::${{ github.event.inputs.pick_runner }}"
         fi
 
   display_runner:
