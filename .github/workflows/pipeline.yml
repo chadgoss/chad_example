@@ -14,7 +14,7 @@ on:
 jobs:
   set_runner:
     runs-on: ubuntu-latest 
-    steps
+    steps:
     - id: set_runner_automated
       run: echo "RUNNER=dev" >> $GITHUB_ENV
 
