@@ -15,22 +15,12 @@ jobs:
   set_runner:
     runs-on: ubuntu-latest 
     steps:
-    - id: set_runner_automated
-      if: ${{ github.event.inputs.pick_runner }} == ''
       run: |
-        echo "RUNNER=dev" >> $GITHUB_ENV
-        echo "Setting automated:"
-        echo $RUNNER
-        echo "Step complete"
-
-    - id: set_runner_manual
-      if: ${{ github.event.inputs.pick_runner }} != ''
-      run: |
-        echo "RUNNER=${{ github.event.inputs.pick_runner }}" >> $GITHUB_ENV
-        echo "Setting manual:"
-        echo $RUNNER
-        echo "Step complete"
-      
+          if [[ ${{ github.event.inputs.pick_runner }} == '' ]]; then
+              echo "RUNNER=dev" >> $GITHUB_ENV
+          else
+              echo "RUNNER=${{ github.event.inputs.pick_runner }}" >> $GITHUB_ENV
+          fi
     outputs:
       dest_runner: $RUNNER
       
