@@ -24,7 +24,7 @@ jobs:
           else
             echo "::set-output name=runner::${{ github.event.inputs.pick_runner }}" 
           fi 
-  job2:
+  display_runner:
     runs-on: ubuntu-latest
     needs: set_runner
     steps:
