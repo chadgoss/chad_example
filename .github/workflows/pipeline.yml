@@ -29,10 +29,18 @@ jobs:
       - id: set_runner_automated
         run: echo "::set-output name=runner::automated" 
           
-  display_runner:
+  set_runner:
     runs-on: ubuntu-latest
     needs: [set_runner_automated, set_runner_manual]
     if: ${{ always() }}
 
     steps:
-      - run: echo "Runners:${{needs.set_runner_manual.outputs.runner}} ${{needs.set_runner_automated.outputs.runner}}"
+      - id: set_runner
+        run: |
+          echo "Runners:${{needs.set_runner_manual.outputs.runner}} ${{needs.set_runner_automated.outputs.runner}}"
+          if [[ ${{needs.set_runner_manual.outputs.runner}} ]]; then
+            echo "::set-output name=runner:${{ github.event.inputs.pick_runner }}"
+          else
+            echo "::set-output name=runner:dev"
+          fi
+
