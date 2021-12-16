@@ -25,9 +25,4 @@ jobs:
     outputs:
       dest_runner: $RUNNER
       
-  display_runner:
-    runs-on: ubuntu-latest 
-    needs: set_runner
-    steps:
-    - id: display_runner
-      run: echo ${{needs.set_runner.outputs.dest_runner}}
+
