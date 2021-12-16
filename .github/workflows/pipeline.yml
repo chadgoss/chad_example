@@ -14,6 +14,8 @@ on:
 jobs:
   set_runner:
     runs-on: ubuntu-latest
+    outputs:
+      runner: ${{ steps.set_runner.outputs.runner }}
     steps:
     - id: set_runner
       run: |
@@ -22,8 +24,6 @@ jobs:
         else
           echo "::set-output name=runner:${{ github.event.inputs.pick_runner }}"
         fi
-    outputs:
-      dest_runner: ${{steps.set_runner.outputs.runner}}
 
   display_runner:
     runs-on: ubuntu-latest
@@ -31,6 +31,6 @@ jobs:
     steps:
     - id: display_runner
       run: |
-        echo "selected runner: ${{needs.set_runner.outputs.dest_runner}}"
+        echo "selected runner: ${{needs.set_runner.outputs.runner}}"
         echo "Step complete"
 
