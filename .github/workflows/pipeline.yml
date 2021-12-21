@@ -2,26 +2,11 @@
 
 name: bundle-workflow
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Manual input test: Reason for running this deployment?'
-        default: 'pipeline testing'
-        required: true
+  release:
+    types:
+      - created
 
-      pick_runner:
-        description: 'runner to use, dev or prod'
-        default: 'ubuntu-latest'
-        required: true
-
-  push:
-    branches:
-      - master
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     name: Create Release
@@ -36,13 +21,6 @@ jobs:
         run: |
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        with:
-          tag_name: ${{ env.RELEASE_VERSION }}
-          release_name: v1
+
 
 
