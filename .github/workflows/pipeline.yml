@@ -3,9 +3,12 @@
 name: bundle-workflow
 
 on:
-  release:
-    types:
-      - created
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Reason for uploading media'
+        default: 'manual execution'
+        required: true
 
 jobs:
   build:
