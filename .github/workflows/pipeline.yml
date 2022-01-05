@@ -10,7 +10,12 @@ on:
 jobs:
   build:
     name: Create Release
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os}}
+    
+    strategy:
+     matrix:
+      os: [ubuntu-18.04, ubuntu-20.04]
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,6 +26,7 @@ jobs:
         run: |
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
+          echo ${{ matrix.os }}
 
 
 
